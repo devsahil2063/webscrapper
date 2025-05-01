@@ -150,5 +150,12 @@ def scrape():
     else:
         return jsonify({'html': html_content})
 
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    return response
+
 if __name__ == '__main__':
     app.run()
