@@ -7,7 +7,7 @@ import json
 import urllib.parse
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 def is_valid_url(url):
     regex = re.compile(
